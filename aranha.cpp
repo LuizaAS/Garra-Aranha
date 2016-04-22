@@ -33,6 +33,8 @@ void animaAranha(Aranha *a, int *cont, int *cont2, float *tamTeia, float *descer
 		musicaInicio->setLoop(true);
 		musicaInicio->play();
 	}
+	a->colide.centro=a->p;
+	a->colide.centro.y = a->p.y+a->colide.raio;
 }
 
 void desenhaAranha(Aranha a, float cor){

@@ -1,7 +1,10 @@
 typedef struct insetos{
-   Posicao p;
+   Colisao p;
    Angulo angulosPatas;
    Angulo anguloCima;
+   Estado est;
 }Insetos;
 
 void desenhaInsetos(Insetos i, float cor);
+void desenhaMosca(Insetos i);
+void animaMoscas(Insetos *m);

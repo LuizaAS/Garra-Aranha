@@ -16,7 +16,7 @@ int abaixa=0, music=0, gira=0, cont=0,cont2=0, light0Ligada=1;
 struct botoes play, pause;
 GLuint texturaQuadrado1,texturaQuadrado2,texturaQuadrado3,texturaQuadrado4,texturaQuadrado5,texturaFloresta,texturaPlaca,texturaArvores;
 Aranha a;
-Insetos i;
+Insetos i, m;
 Posicao tamTela;
 sf::Music musicaInicio,musicaAranha;
 
@@ -49,17 +49,19 @@ void desenha(){
 		gluLookAt(0-gira, 0, 7.0+gira, 0.0+virar+gira, 0.0-down, 0.0+gira, 0.0, 1.0, 0.0);
 		else
         	gluLookAt(0, 0.0, 7.0, 0.0+virar, 0-down, 0, 0.0, 1.0, 0.0);
-	
-	glPushMatrix();
-		Floresta(texturaFloresta, texturaArvores);
-		Paredes(texturaQuadrado1, texturaQuadrado2, texturaQuadrado3, texturaQuadrado4, texturaQuadrado5);
-		Placa(texturaPlaca);
-		Botoes(play.textura, pause.textura);
-		animaAranha(&a, &cont, &cont2, &tamTeia, &descer, &musicaAranha, &musicaInicio);	
-		desenhaAranha(a, cor);
-		desenhaInsetos(i,cor);
-	
-	glPopMatrix();
+
+    glEnable(GL_DEPTH_TEST);
+
+	Floresta(texturaFloresta, texturaArvores);
+	Paredes(texturaQuadrado1, texturaQuadrado2, texturaQuadrado3, texturaQuadrado4, texturaQuadrado5);
+	Placa(texturaPlaca);
+	Botoes(play.textura, pause.textura);
+	animaAranha(&a, &cont, &cont2, &tamTeia, &descer, &musicaAranha, &musicaInicio);	
+	desenhaAranha(a, cor);
+	desenhaInsetos(i,cor);
+	animaMoscas(&m);
+
+	glDisable(GL_DEPTH_TEST);
     glutSwapBuffers();
 }
 
@@ -68,9 +70,9 @@ void init(){
     texturaQuadrado1 = carregar_textura("imagens/quadrado1.png");    texturaQuadrado2 = carregar_textura("imagens/quadrado2.png");
     texturaQuadrado3 = carregar_textura("imagens/quadrado3.png");    texturaQuadrado4 = carregar_textura("imagens/quadrado4.png");
 	texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
-	texturaFloresta = carregar_textura("imagens/chao.jpg");			 texturaArvores = carregar_textura("imagens/floresta.jpg");
-	texturaPlaca = carregar_textura("imagens/placa2.png");
-	play.textura = carregar_textura("imagens/play.png");              pause.textura = carregar_textura("imagens/pause.png");
+	texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
+	texturaPlaca     = carregar_textura("imagens/placa2.png");
+	play.textura     = carregar_textura("imagens/play.png");         pause.textura = carregar_textura("imagens/pause.png");
 
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -81,10 +83,10 @@ void init(){
 	musicaInicio.play();
 	
 	a.angulosPatas = anguloPatasAbertas; a.anguloCima = angCabecaCima;
-	a.est= ativo;
-	a.p.x=0; 	a.p.y=5;	a.p.z=-5;
+	a.est= ativo;	a.p.x=0; 	a.p.y=5;	a.p.z=-5;	a.colide.raio = 0.5;
 	i.angulosPatas = anguloPatasAbertas; i.anguloCima = angCabecaCima;
-	i.p.x=0;	i.p.y=-6;	i.p.z=-5;
+	i.p.centro.x=0;	i.p.centro.y=-6; i.p.centro.z=-5; i.p.raio=0.5;
+	m.est= ativo; m.p.centro.x=3;	m.p.centro.y=-3; m.p.centro.z=-3; m.p.raio=0.3;
 	play.coordenadas.x=-2; 	play.coordenadas.y=-10;
 	play.tamanho.x=4;	  	play.tamanho.y=4;
 	pause.coordenadas.x=2;	pause.coordenadas.y=-10;
@@ -94,7 +96,6 @@ void init(){
    	glEnable(GL_CULL_FACE);
    	glCullFace(GL_BACK);
 
-   	glEnable(GL_DEPTH_TEST);
    	glDepthFunc(GL_LESS);
 
    	glEnable(GL_LIGHT0);
@@ -214,6 +215,7 @@ static void teclado(unsigned char key, int x, int y){
 }
 
 static void idle(void){
+
    	glutPostRedisplay();
 }
 
