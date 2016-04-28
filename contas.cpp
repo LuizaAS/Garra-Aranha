@@ -7,7 +7,6 @@
 #include <SFML/Audio.hpp>
 #include "contas.h"
 #include "aranha.h"
-#include "botao.h"
 #include "fundo.h"
 
 void converteCoordenadas(int x, int y, struct posicao *mouse, struct posicao tamanhoTela){

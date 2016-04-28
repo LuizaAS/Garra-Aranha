@@ -1,5 +1,5 @@
 compila:
-	g++ -o programa tp2.cpp aranha.cpp botao.cpp contas.cpp fundo.cpp insetos.cpp -lSOIL -lglut -lGLU -lGL -lsfml-audio -lm
+	g++ -o programa tp2.cpp aranha.cpp contas.cpp fundo.cpp insetos.cpp -lSOIL -lglut -lGLU -lGL -lsfml-audio -lm
  #regra para a compialção
 install:
 	sudo apt-get install build-essential

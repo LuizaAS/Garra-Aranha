@@ -7,31 +7,62 @@
 #include <SFML/Audio.hpp>
 #include "contas.h"
 #include "aranha.h"
-#include "botao.h"
 #include "fundo.h"
 
-void animaAranha(Aranha *a, int *cont, int *cont2, float *tamTeia, float *descer,sf::Music *musicaAranha ,sf::Music *musicaInicio){
+void animaAranha(Aranha *a, int cont[4], float *tamTeia, float *descer,sf::Music *musicaAranha ,sf::Music *musicaInicio){
+	//gira a aranha para ela descer	
+	if (a->est==colide&&*descer==0){
+		*descer=1;
+		a->anguloCima=angCabecaCima;
+	}
+	//desce a aranha
 	if(*descer==1){
 		a->p.y=a->p.y-0.1;
-		*cont+=1;
+		cont[0]+=1;
 		*tamTeia=*tamTeia+0.1;
 		desenhaTeia(*a,*tamTeia);
 	}
-	if(*cont==105){
+	//sobe a aranha
+	if((cont[0]==105|| a->est==inativo)&& a->anguloCima.x==angCabecaCima.x){
 		a->est=inativo;
 		*descer=0;
 		a->p.y=a->p.y+0.1;
 		*tamTeia=*tamTeia-0.1;
 		desenhaTeia(*a,*tamTeia);
-		*cont2+=1;
+		cont[1]+=1;
 	}
-	if(*cont2==105){
+	//vai pro lado esquerdo
+	if(cont[1]==cont[0] &&  a->est==inativo ){
+		//cont[0]=0;
+		if(a->angulosPatas.x==anguloPatasFechadas.x){
+			a->p.x=a->p.x-0.1;
+			cont[2]+=1;
+		}
+		else{
+			cont[3]=69;
+			cont[2]=70+(a->anda*10);
+		}
+		a->anguloCima = angCabecaBaixo;
+	}
+	//vai pro lado direito
+	if(cont[2]==70+(a->anda*10)){
+		/*cont[1]=0;*/
+		cont[0]=0;
+		a->p.x=a->p.x+0.1;
+		cont[3]+=1;
 		a->est=ativo;
-		*cont=0;
-		*cont2=0;
+		a->angulosPatas = anguloPatasAbertas;
+	}
+	if(cont[3]==70){
+		cont[2]=0;
+		cont[1]=0;
+		
 		musicaAranha->stop();
 		musicaInicio->setLoop(true);
 		musicaInicio->play();
+		cont[3]=0;
+		a->anda=0;
+		
 	}
 	a->colide.centro=a->p;
 	a->colide.centro.y = a->p.y+a->colide.raio;

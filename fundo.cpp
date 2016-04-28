@@ -7,7 +7,6 @@
 #include <SFML/Audio.hpp>
 #include "contas.h"
 #include "aranha.h"
-#include "botao.h"
 #include "fundo.h"
 
 int carregar_textura(char const nome[40]){
@@ -41,6 +40,7 @@ void Floresta( GLuint texturaFloresta, GLuint texturaArvores){
     desenhaTexturas(texturaArvores,  10, 10,-8,12,-10,  6,  6,-10);
     desenhaTexturas(texturaArvores, -10,-10,-8,12,  6,-10,-10,  6);
 }
-void Placa(GLuint texturaPlaca){
-    desenhaTexturas(texturaPlaca, -6, 6, -11.5, -6, 0, 0, 0, 0);
+void Teia(GLuint texturaTeia){
+	desenhaTexturas(texturaTeia,-8,-8,-8, 8,  0,-10,-10,  0);
+
 }
