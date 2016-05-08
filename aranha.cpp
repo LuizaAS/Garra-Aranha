@@ -23,7 +23,7 @@ void animaAranha(Aranha *a, int cont[4], float *tamTeia, float *descer,sf::Music
 		desenhaTeia(*a,*tamTeia);
 	}
 	//sobe a aranha
-	if((cont[0]==105|| a->est==inativo)&& a->anguloCima.x==angCabecaCima.x){
+	if((cont[0]==110|| a->est==inativo)&& a->anguloCima.x==angCabecaCima.x){
 		a->est=inativo;
 		*descer=0;
 		a->p.y=a->p.y+0.1;

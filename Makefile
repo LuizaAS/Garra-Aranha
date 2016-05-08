@@ -1,4 +1,4 @@
-compila:
+all: 
 	g++ -o programa tp2.cpp aranha.cpp contas.cpp fundo.cpp insetos.cpp -lSOIL -lglut -lGLU -lGL -lsfml-audio -lm
  #regra para a compialção
 install:
@@ -8,8 +8,8 @@ install:
 	sudo apt-get install libsfml-dev
 	sudo apt-get install libsoil-dev
 
-run:
+run: all
 	./programa
 
-limpa:
+clean:
 	rm programa #apaga o arquivo prog gerado

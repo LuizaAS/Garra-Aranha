@@ -11,7 +11,7 @@
 #include "insetos.h"
 
 float virar=0.0, cor=0, descer=0, tamTeia=0;
-int abaixa=0, music=0, gira=0, cont[4]={0}, light0Ligada=1; 
+int abaixa=0, music=0, gira=0, cont[4]={0}, light0Ligada=1;
 GLuint texturaQuadrado1,texturaQuadrado2,texturaQuadrado3,texturaQuadrado4,texturaQuadrado5,texturaFloresta,texturaArvores,texturaTeia;
 Aranha a;
 Insetos i[qntInsetos];
@@ -47,12 +47,12 @@ void desenha(){
 		else
         	gluLookAt(0, 1.0, 7.0, 0.0+virar, 0-down, 0, 0.0, 1.0, 0.0);
 
-    glEnable(GL_DEPTH_TEST);
+  glEnable(GL_DEPTH_TEST);
 
 	Floresta(texturaFloresta, texturaArvores);
 	Paredes(texturaQuadrado1, texturaQuadrado2, texturaQuadrado3, texturaQuadrado4, texturaQuadrado5);
 	Teia(texturaTeia);
-	animaAranha(&a, cont, &tamTeia, &descer, &musicaAranha, &musicaInicio);	
+	animaAranha(&a, cont, &tamTeia, &descer, &musicaAranha, &musicaInicio);
 	desenhaAranha(a, cor);
 	animaInsetos(&a,i, &musicaInseto);
 
@@ -61,30 +61,29 @@ void desenha(){
 }
 
 void init(){
-	int b;
+    int b;
     glClearColor (1, 1, 1, 0);
     texturaQuadrado1 = carregar_textura("imagens/quadrado1.png");    texturaQuadrado2 = carregar_textura("imagens/quadrado2.png");
     texturaQuadrado3 = carregar_textura("imagens/quadrado3.png");    texturaQuadrado4 = carregar_textura("imagens/quadrado4.png");
-	texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
-	texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
-	texturaTeia = carregar_textura("imagens/teia.png");
+	  texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
+	  texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
+	  texturaTeia = carregar_textura("imagens/teia.png");
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-	musicaInicio.openFromFile("audios/casa.ogg"); 	musicaInicio.setVolume(75);
-	musicaAranha.openFromFile("audios/aranha.ogg"); musicaAranha.setVolume(75); 
-	musicaInseto.openFromFile("audios/grito.ogg"); musicaInseto.setVolume(75);
-	musicaInicio.setLoop(true);
-	musicaInicio.play();
-	
-	a.angulosPatas = anguloPatasAbertas; a.anguloCima = angCabecaBaixo;
-	a.est = ativo;
-	for(b=0;b>qntInsetos/2;b++){
-		i[b].est=inativo; i[b+(qntInsetos/2)].est=inativo;
-		criaMoscas(&i[b]);	criaArainha(&i[b+(qntInsetos/2)-1],&i[b+(qntInsetos/2)]);
-		printf("oii%d\n", b);
-	}
-	a.est= ativo;	a.p.x=0; 	a.p.y=5;	a.p.z=-5;	a.colide.raio = 2; a.anda=0;
+  	musicaInicio.openFromFile("audios/casa.ogg"); 	musicaInicio.setVolume(75);
+  	musicaAranha.openFromFile("audios/aranha.ogg"); musicaAranha.setVolume(75);
+  	musicaInseto.openFromFile("audios/grito.ogg"); musicaInseto.setVolume(75);
+  	musicaInicio.setLoop(true);
+  	musicaInicio.play();
+
+  	a.angulosPatas = anguloPatasAbertas; a.anguloCima = angCabecaBaixo;
+  	a.est = ativo;
+  	for(b=0;b<qntInsetos/2;b++){
+  		i[b].est=inativo; i[b+(qntInsetos/2)].est=inativo;
+  		criaMosca(&i[b]);	criaArainha(&i[b+(qntInsetos/2)]);
+  	}
+  	a.est= ativo;	a.p.x=0; 	a.p.y=5;	a.p.z=-5;	a.colide.raio = 3; a.anda=0;
 
    	glClearColor(1,1,1,1);
    	glEnable(GL_CULL_FACE);

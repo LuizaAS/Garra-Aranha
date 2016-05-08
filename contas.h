@@ -1,10 +1,10 @@
 typedef struct posicao{
-   float x, y, z;   
-} Posicao;
+   float x, y, z;
+} Posicao, Direcao;
 
 typedef struct colisao{
    int raio;
-   Posicao centro;   
+   Posicao centro;
 } Colisao;
 
 void converteCoordenadas(int x, int y, struct posicao *mouse, struct posicao tamanhoTela);

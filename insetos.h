@@ -8,17 +8,14 @@ typedef struct insetos{
 }Insetos;
 #define qntInsetos 10
 
+void desenhaArainha(Insetos i);
 
-void desenhaInsetos(Insetos i);
-	
 void desenhaMosca(Insetos i);
 
-void moveMoscas(Aranha *a, Insetos *m, sf::Music *musicaInseto);
+void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInseto );
 
-void moveArainha(Aranha *a, Insetos *m, sf::Music *musicaInseto );
+void criaMosca(Insetos *m);
 
-void criaMoscas(Insetos *m);
-
-void criaArainha(Insetos *a,Insetos *m);
+void criaArainha(Insetos *m);
 
 void animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto);
