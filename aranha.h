@@ -1,5 +1,5 @@
 typedef struct posicao Angulo;
-enum Estado {ativo, inativo, colide};
+enum Estado {ativo, inativo, colide, voltando};
 typedef struct aranha{
    Posicao p;
    Angulo angulosPatas;

@@ -50,13 +50,13 @@ void animaAranha(Aranha *a, int cont[4], float *tamTeia, float *descer,sf::Music
 		cont[0]=0;
 		a->p.x=a->p.x+0.1;
 		cont[3]+=1;
-		a->est=ativo;
+		a->est=voltando;
 		a->angulosPatas = anguloPatasAbertas;
 	}
 	if(cont[3]==70){
 		cont[2]=0;
 		cont[1]=0;
-		
+		a->est=ativo;
 		musicaAranha->stop();
 		musicaInicio->setLoop(true);
 		musicaInicio->play();
@@ -117,34 +117,34 @@ void desenhaTeia(Aranha a, int tamTeia){
 void desenhaPata(Angulo aPatas){
    glPushMatrix();
       glScalef (0.5, 0.5, 0.5);
-      glTranslatef(-1,-0.7,0);
+      glTranslatef(-1.0,-0.7,0);
       glRotatef( (GLfloat)-90,45,0.0,1.0);
       glTranslatef (-1.0, 0.0, 0.0);
       glRotatef ((GLfloat) aPatas.x, 0.0, 0.0, 1.0);
-      glTranslatef (1.0, 0.0, 0.0);
+      glTranslatef (2.0, 0.0, 0.0);
       desenhaFalange();
 
-      glTranslatef (1.0, 0.0, 0.0);
+      glTranslatef (2.0, 0.0, 0.0);
       glScalef (0.9, 0.9, 1.0);
       glRotatef ((GLfloat) aPatas.y, 0.0, 0.0, 1.0);
-      glTranslatef (1.0, 0.0, 0.0);
+      glTranslatef (2.0, 0.0, 0.0);
       desenhaFalange();
 
-      glTranslatef (1.0, 0.0, 0.0);
+      glTranslatef (2.0, 0.0, 0.0);
       glScalef (0.9, 0.9, 1.0);
       glRotatef ((GLfloat) aPatas.z, 0.0, 0.0, 1.0);
-      glTranslatef (1.0, 0.0, 0.0);
+      glTranslatef (2.0, 0.0, 0.0);
       desenhaFalange();
    glPopMatrix();
 }
 
 void desenhaFalange(){
    glPushMatrix();
-         glTranslatef (-1.0, 0.0, 0.0);
+         glTranslatef (-2.0, 0.0, 0.0);
          glutSolidSphere(0.25,7,7);
    glPopMatrix();
    glPushMatrix();
-      glScalef (2.0, 0.4, 1.0);
+      glScalef (4.0, 0.4, 0.4);
       glutSolidCube(1.0);
    glPopMatrix();
 }

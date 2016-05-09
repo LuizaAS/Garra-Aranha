@@ -42,5 +42,4 @@ void Floresta( GLuint texturaFloresta, GLuint texturaArvores){
 }
 void Teia(GLuint texturaTeia){
 	desenhaTexturas(texturaTeia,-8,-8,-8, 8,  0,-10,-10,  0);
-
 }

@@ -14,6 +14,7 @@ void desenhaArainha(Insetos* i){
 	glPushMatrix();
 		glTranslatef(i->p.centro.x,i->p.centro.y,i->p.centro.z);
 		glRotatef((GLfloat)i->anguloCima.x,(GLfloat)i->anguloCima.y,(GLfloat)i->anguloCima.z,1.0);
+		glScalef (0.7, 0.7, 0.7);
 		//corpo
 		 glPushMatrix();
          		glColor3f(0,0,0);
@@ -81,14 +82,12 @@ void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInse
 		float direcaoSorteadaX = ((float)rand()/(float)RAND_MAX)*3 - 1;
 		float direcaoSorteadaY = ((float)rand()/(float)RAND_MAX)*3 - 1;
 		float direcaoSorteadaZ = ((float)rand()/(float)RAND_MAX)*3 - 1;
-		if(mudaDirecao == 1)
-		{
+		if(mudaDirecao == 1){
 			m->p.centro.x -= (direcaoSorteadaX*0.01);
 			m->p.centro.y -= (m->tipo == mosca ? 1 : 0 ) * (direcaoSorteadaY*0.01);
 			m->p.centro.z -= (direcaoSorteadaZ*0.01);
 		}
 		else{
-			// printf("rand: x,y,z = (%.5f, %.5f, %.5f)", direcaoSorteadaX, direcaoSorteadaY, direcaoSorteadaZ);
 			m->p.centro.x += (direcaoSorteadaX*0.01);
 			// operador ternário para condicionais em linha: "? :"
 			// ideia: variavel == TRUE ? retorna isto : retorna este outro;
@@ -113,7 +112,6 @@ void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInse
 		else if(m->p.centro.y <= -6)
 				m->p.centro.y++;
 		if(esferaEncostaNaOutra(a->colide,m->p)&&a->est==colide){
-				//printf("ook\n");
 				musicaInseto->play();
 				m->est=colide;
 				a->est=inativo;
@@ -123,29 +121,19 @@ void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInse
 
 void criaMosca(Insetos *m){
 	m->est= ativo;
-	m->p.centro.x=rand()%7;
-	if(rand()%2==1)
-		m->p.centro.x*=-1;
-	m->p.centro.y=rand()%7;
-	if(rand()%2==1)
-		m->p.centro.y*=-1;
-	m->p.centro.z=rand()%6;
-	if(rand()%2==1)
-		m->p.centro.z*=-1;
+	m->p.centro.x=rand()%14-7;
+	m->p.centro.y=rand()%14-7;
+	m->p.centro.z=rand()%12-6;
 	m->p.raio=0.3;
 	m->tipo=mosca;
 }
 
 void criaArainha(Insetos *m){
 	m->est= ativo;
-	m->p.centro.y= 5;
+	m->p.centro.y= -6;
 	m->p.centro.x=-5 + posicaoX;
 	posicaoX+=2;
-	//if(rand()%2==1)
-	//	m->p.centro.x*=-1;
 	m->p.centro.z=-5;
-	//if(rand()%2==1)
-	//	m->p.centro.y*=-1;
 	m->p.raio=0.5;
 	m->tipo=arainha;
 	m->angulosPatas = anguloPatasAbertas;
@@ -162,8 +150,8 @@ void animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto){
 			}
 			else if(m[i].est==colide){
 				m[i].p.centro=a->p;
-				m[i].p.centro.y-=0.5;
-				if(a->est==ativo)
+				m[i].p.centro.y+=(a->anguloCima.x == angCabecaCima.x ? -1 : 1 )*0.5;
+				if(a->est==voltando)
 					m[i].est=inativo;
 			}
 			if(m[i].tipo==mosca)

@@ -31,6 +31,7 @@ void redimensiona(int w, int h){
 }
 
 void desenha(){
+	gluPerspective(65.0, (GLfloat) tamTela.x/(GLfloat) tamTela.y, 1.0, 20.0);
 	glColor3f(1,1,1);
 	float down=0;
 	if(abaixa>0)
@@ -47,15 +48,15 @@ void desenha(){
 		else
         	gluLookAt(0, 1.0, 7.0, 0.0+virar, 0-down, 0, 0.0, 1.0, 0.0);
 
-  glEnable(GL_DEPTH_TEST);
+  	glEnable(GL_DEPTH_TEST);
 
 	Floresta(texturaFloresta, texturaArvores);
 	Paredes(texturaQuadrado1, texturaQuadrado2, texturaQuadrado3, texturaQuadrado4, texturaQuadrado5);
 	Teia(texturaTeia);
+
+	animaInsetos(&a,i, &musicaInseto);
 	animaAranha(&a, cont, &tamTeia, &descer, &musicaAranha, &musicaInicio);
 	desenhaAranha(a, cor);
-	animaInsetos(&a,i, &musicaInseto);
-
 	glDisable(GL_DEPTH_TEST);
     glutSwapBuffers();
 }
