@@ -25,7 +25,7 @@ void desenhaArainha(Insetos* i){
 		//olhos
 		glPushMatrix();
 			glColor3f(0.3,0.1,0.2);
-         		glTranslatef(0.2,0.3,0.3);
+         		glTranslatef(-0.2,0.1,0.3);
 	 		glScalef (0.3, 0.3, 0.3);
       	 		glutSolidSphere(0.5,10,10);
 		glPopMatrix();
@@ -61,24 +61,22 @@ void desenhaMosca(Insetos* i){
 				glTranslatef(i->p.centro.x,i->p.centro.y,i->p.centro.z);
 				glColor3f(0,0,0);
 				glutSolidSphere(0.3,10,10);
-				glColor3f(1,1,1);
+				glColor3f(0.4,0.4,0.4);
 				glPushMatrix();
-						glTranslatef(0,0,0.3);
-						glRotatef( (GLfloat)-90,45,0.0,1.0);
-						glutSolidCylinder((GLdouble) 0.2, (GLdouble) 0.1, (GLint) 10, (GLint) 1);
+						glTranslatef(0.4,0,0);
+						glRotatef( (GLfloat)90,45,-45.0,1.0);
+						glutSolidCylinder((GLdouble) 0.2, (GLdouble) 0.02, (GLint) 10, (GLint) 1);
 				glPopMatrix();
 				glPushMatrix();
-						glTranslatef(0,0,-0.3);
-						glRotatef( (GLfloat)-90,45,0.0,1.0);
-						glutSolidCylinder((GLdouble) 0.2, (GLdouble) 0.1, (GLint) 10, (GLint) 1);
+						glTranslatef(-0.4,0,0);
+						glRotatef( (GLfloat)90,45,45.0,1.0);
+						glutSolidCylinder((GLdouble) 0.2, (GLdouble) 0.02, (GLint) 10, (GLint) 1);
 				glPopMatrix();
 		glPopMatrix();
 }
 
-
 void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInseto ) {
 		srand(time(NULL) + indiceDoInseto*500);
-
 		float direcaoSorteadaX = ((float)rand()/(float)RAND_MAX)*3 - 1;
 		float direcaoSorteadaY = ((float)rand()/(float)RAND_MAX)*3 - 1;
 		float direcaoSorteadaZ = ((float)rand()/(float)RAND_MAX)*3 - 1;
@@ -95,9 +93,9 @@ void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInse
 			m->p.centro.z += (direcaoSorteadaZ*0.01);
 		}
 
-		if(m->p.centro.z >= 9)
+		if(m->p.centro.z >= 0)
 				m->p.centro.z--;
-		else if(m->p.centro.z <= -9)
+		else if(m->p.centro.z <= -8)
 				m->p.centro.z++;
 		if(m->p.centro.x >= 6){
 				m->p.centro.x--;
@@ -107,11 +105,12 @@ void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInse
 				m->p.centro.x++;
 				mudaDirecao=0;
 		}
-		if(m->p.centro.y  >= 0)
+		if(m->p.centro.y  >= 6)
 				m->p.centro.y--;
 		else if(m->p.centro.y <= -6)
 				m->p.centro.y++;
 		if(esferaEncostaNaOutra(a->colide,m->p)&&a->est==colide){
+				//printf("ook\n");
 				musicaInseto->play();
 				m->est=colide;
 				a->est=inativo;
