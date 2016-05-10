@@ -13,6 +13,7 @@
 float virar=0.0, cor=0, descer=0, tamTeia=0;
 int abaixa=0, music=0, gira=0, cont[4]={0}, light0Ligada=1;
 GLuint texturaQuadrado1,texturaQuadrado2,texturaQuadrado3,texturaQuadrado4,texturaQuadrado5,texturaFloresta,texturaArvores,texturaTeia;
+GLuint texturaPlay, texturaMenu;
 Aranha a;
 Insetos i[qntInsetos];
 Posicao tamTela;
@@ -69,6 +70,7 @@ void init(){
 	  texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
 	  texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
 	  texturaTeia = carregar_textura("imagens/teia.png");
+	  texturaPlay = carregar_textura("imagens/playbutton.png");              texturaMenu = carregar_textura("imagens/forest.jpg");
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
