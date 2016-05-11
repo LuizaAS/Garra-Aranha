@@ -6,7 +6,7 @@ typedef struct insetos{
    Estado est;
    Tipo tipo;
 }Insetos;
-#define qntInsetos 10
+#define qntInsetos 2
 
 void desenhaArainha(Insetos i);
 
@@ -18,4 +18,5 @@ void criaMosca(Insetos *m);
 
 void criaArainha(Insetos *m);
 
-void animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto);
+// retorna qnt de insetos inativos
+int animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto);

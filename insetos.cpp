@@ -6,6 +6,7 @@
 #include <math.h>
 #include <SFML/Audio.hpp>
 #include "contas.h"
+#include "botao.h"
 #include "aranha.h"
 #include "fundo.h"
 #include "insetos.h"
@@ -139,10 +140,13 @@ void criaArainha(Insetos *m){
 	m->anguloCima = angCabecaCima;
 }
 
-void animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto){
+int animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto){
 	glColor3f(0,0,0);
+	int qntInsetosInativos=0;
 	for(int i=0; i<qntInsetos;i++){
-		if(m[i].est==inativo){}
+		if(m[i].est==inativo){
+			qntInsetosInativos++;
+		}
 		else{
 			if(m[i].est==ativo){
 				moveInseto(a, &m[i], musicaInseto, i);
@@ -160,4 +164,5 @@ void animaInsetos(Aranha *a,Insetos m[qntInsetos], sf::Music *musicaInseto){
 
 		}
 	}
+	return qntInsetosInativos;
 }

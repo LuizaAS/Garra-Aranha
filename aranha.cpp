@@ -6,6 +6,7 @@
 #include <math.h>
 #include <SFML/Audio.hpp>
 #include "contas.h"
+#include "botao.h"
 #include "aranha.h"
 #include "fundo.h"
 

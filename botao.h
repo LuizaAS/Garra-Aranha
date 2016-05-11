@@ -4,6 +4,6 @@ struct botoes {
   	GLuint textura;
 };
 
-bool clique(struct posicao mouse, struct botoes botao);
+//bool clique(struct posicao mouse, struct botoes botao);
 void desenhaBotoes(struct botoes botao);
-void Botoes(GLuint texturaPlay, GLuint texturaPause);
+//void Botoes(GLuint texturaPlay, GLuint texturaPause);
