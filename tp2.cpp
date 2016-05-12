@@ -96,7 +96,7 @@ void desenha2D(){
 					desenhaTextura(texturaTutorial, -tamTela.x/2, tamTela.x/2, -tamTela.y/2, tamTela.y/2, 0, 0, 0, 0);
 					break;
 				case win:
-					desenhaTextura(texturaWin, -tamTela.x/6+30, tamTela.x/6+30, -tamTela.y/6, tamTela.y/6, 0, 0, 0, 0);
+					desenhaTextura(texturaWin, -tamTela.x/6+10, tamTela.x/6+10, -tamTela.y/6, tamTela.y/6, 0, 0, 0, 0);
 					break;
 				case gameOver:
 					desenhaTextura(texturaGamaOver, -tamTela.x/5, tamTela.x/5, -tamTela.y/6, tamTela.y/6, 0, 0, 0, 0);
