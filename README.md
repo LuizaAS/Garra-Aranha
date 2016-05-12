@@ -54,12 +54,14 @@ FUNCIONALIDADES:
 	<p><kbd>ESC</kbd> PARA SAIR DO JOGO</p>
 	<p>E PRESSIONE QUALQUER TECLA PARA SAIR DAS TELAS DE GANHOU, PERDEU E TURORIAL</p>
 
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:47.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:47.png?raw=true" width="300" height="250"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:57:53.png?raw=true" width="300" height="250"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:58:35.png?raw=true" width="300" height="250"/>
 
 <h3>CREDITOS:</h3>
 Desenvolvido por: Luiza && Marcela para a disciplina de computação gráfica 2016/01.
 Grande parte das imagens e audios foram retiradas do google e youtube.
-[![DEMO]][video-jogo]
+[DEMO][video-jogo]
 
 [video-jogo]: https://www.youtube.com/watch?v=b0V5PMnJ6tg&feature=youtu.be
 
@@ -75,7 +77,8 @@ Grande parte das imagens e audios foram retiradas do google e youtube.
 	*Skybox.
 
 <h4>Observações:</h4>
-	Algumas funções foram desenvolvidas com ajuda de colegas. Estas estão comentadas a frente. Este readMe foi inspirado no do pedrohlcastro (nome de usuario do github).
+	Algumas funções foram desenvolvidas com ajuda de colegas. Estas estão comentadas a frente. 
+	Este readMe foi inspirado no do pedrohlcastro (nome de usuario do github).
 
 
 
