@@ -38,6 +38,7 @@ void desenhaJogo(){
 	glLoadIdentity ();
 	float down=0;
 	gluPerspective(65.0, (GLfloat) tamTela.x/(GLfloat) tamTela.y, 1.0, 20.0);
+	glMatrixMode(GL_MODELVIEW);
 	glColor3f(1,1,1);
 	if(abaixa>0)
 		down=3.5;
@@ -60,7 +61,6 @@ void desenhaJogo(){
 	Floresta(texturaFloresta, texturaArvores);
 	Paredes(texturaQuadrado1, texturaQuadrado2, texturaQuadrado3, texturaQuadrado4, texturaQuadrado5);
 	Teia(texturaTeia);
-
 	if(animaInsetos(&a,i, &musicaInseto)==qntInsetos){
 		menu = win;
 		musicaAranha.stop();
@@ -127,6 +127,8 @@ void desenha(){
 }
 
 void inicializa(){
+	glEnable( GL_BLEND );
+    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 	musicaInicio.setVolume(volume);	musicaAranha.setVolume(volume); musicaInseto.setVolume(volume); musicaGameOver.setVolume(volume);
 	musicaInicio.setLoop(true);
   	musicaInicio.play();
@@ -153,8 +155,7 @@ void init(){
 	texturaInicial = carregar_textura("imagens/forest.png");		texturaTutorial = carregar_textura("imagens/tutorial2.png");	
 	play.textura=carregar_textura("imagens/playbutton.png");		tutorial.textura=carregar_textura("imagens/tutorial.png");
 	texturaWin = carregar_textura("imagens/win.png");				texturaGamaOver = carregar_textura("imagens/gameover.png");
-    glEnable( GL_BLEND );
-    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+
 
   	musicaInicio.openFromFile("audios/casa.ogg");	musicaAranha.openFromFile("audios/aranha.ogg");		musicaInseto.openFromFile("audios/grito.ogg"); 	musicaGameOver.openFromFile("audios/GameOver.ogg");
 
