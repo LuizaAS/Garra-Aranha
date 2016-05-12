@@ -2,11 +2,8 @@
 
 <h2>A Aranha</h2>
 
-[![A Aranha](images/aranha.gif)][a-aranha-youtube]
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/imagens/aranha.gif?raw=true" width="300" height="250"/>
 
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/imagens/aranha.gif?raw=true" width="250" height="300"/>
-
-[a-aranha-youtube]: https://www.youtube.com/watch?v=IWcU_Qsk-4A
 
 Ajude uma pobre e terrivel aranha a conquistar suas refeições diarias.
 
@@ -57,13 +54,28 @@ FUNCIONALIDADES:
 	<p><kbd>ESC</kbd> PARA SAIR DO JOGO</p>
 	<p>E PRESSIONE QUALQUER TECLA PARA SAIR DAS TELAS DE GANHOU, PERDEU E TURORIAL</p>
 
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/tree/master/imagens/tutorial2.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:47.png?raw=true" width="250" height="300"/>
 
 <h3>CREDITOS:</h3>
 Desenvolvido por: Luiza && Marcela para a disciplina de computação gráfica 2016/01.
 Grande parte das imagens e audios foram retiradas do google e youtube.
-DEMO: https://www.youtube.com/watch?v=q2L8nsqD320
+[![DEMO]][video-jogo]
 
+[video-jogo]: https://www.youtube.com/watch?v=b0V5PMnJ6tg&feature=youtu.be
+
+<h3>EXTRAS:</h3>
+	*Musica
+	*Tema diferente.
+	*Dois tipos de objetos.
+	*Visões: laterais, superior.
+	*Movimento dos objetos.
+	*Video.
+	*Botões clicaveis.
+	*Várias telas.
+	*Skybox.
+
+<h4>Observações:</h4>
+	Algumas funções foram desenvolvidas com ajuda de colegas. Estas estão comentadas a frente. Este readMe foi inspirado no do pedrohlcastro (nome de usuario do github).
 
 
 
