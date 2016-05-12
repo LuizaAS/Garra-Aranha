@@ -82,12 +82,12 @@ void moveInseto(Aranha *a, Insetos *m, sf::Music *musicaInseto, int indiceDoInse
 		float direcaoSorteadaY = ((float)rand()/(float)RAND_MAX)*3 - 1;
 		float direcaoSorteadaZ = ((float)rand()/(float)RAND_MAX)*3 - 1;
 		if(mudaDirecao == 1){
-			m->p.centro.x -= (direcaoSorteadaX*0.01);
+			m->p.centro.x -= (direcaoSorteadaX*0.02);
 			m->p.centro.y -= (m->tipo == mosca ? 1 : 0 ) * (direcaoSorteadaY*0.01);
 			m->p.centro.z -= (direcaoSorteadaZ*0.01);
 		}
 		else{
-			m->p.centro.x += (direcaoSorteadaX*0.01);
+			m->p.centro.x += (direcaoSorteadaX*0.02);
 			// operador ternário para condicionais em linha: "? :"
 			// ideia: variavel == TRUE ? retorna isto : retorna este outro;
 			m->p.centro.y += (m->tipo == mosca ? 1 : 0 ) * (direcaoSorteadaY*0.01);

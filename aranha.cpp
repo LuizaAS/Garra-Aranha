@@ -46,7 +46,7 @@ void animaAranha(Aranha *a, int cont[4], float *tamTeia, float *descer,sf::Music
 		a->anguloCima = angCabecaBaixo;
 	}
 	//vai pro lado direito
-	if(cont[2]==70+(a->anda*10)){
+	if(cont[2]==70+(a->anda*10) ){
 		/*cont[1]=0;*/
 		cont[0]=0;
 		a->p.x=a->p.x+0.1;
