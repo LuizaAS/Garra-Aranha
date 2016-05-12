@@ -49,14 +49,14 @@ CASO DESEJE COMPILAR O PROGAMA TAMBÉM USE OS COMANDOS DENTRO DA PASTA Makefile/
 FUNCIONALIDADES:
 	<p>USE <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> NO TECLADO PARA MOVIMENTAR A ARANHA.</p>
 	E <kbd>Backspace</kbd> PARA TENTAR PEGAR UM INSETO</p>
-	<p>USE <kbd>a</kbd><kbd>w</kbd><kbd>d</kbd><kbd>s</kbd> PARA MOVER A CAMERA</p>
+	<p>USE <kbd>A</kbd><kbd>W</kbd><kbd>D</kbd><kbd>S</kbd> PARA MOVER A CAMERA</p>
 	<p>O MOUSE PODE SER USADO PARA MOVIMENTAR SUTILMETE A CAMERA E NAVEGAR NO MENU INICIAL</p>
 	<p><kbd>ESC</kbd> PARA SAIR DO JOGO</p>
 	<p>E PRESSIONE QUALQUER TECLA PARA SAIR DAS TELAS DE GANHOU, PERDEU E TURORIAL</p>
 
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:47.png?raw=true" width="300" height="250"/>
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:57:53.png?raw=true" width="300" height="250"/>
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:58:35.png?raw=true" width="300" height="250"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:47.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:57:53.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:58:35.png?raw=true" width="250" height="300"/>
 
 <h3>CREDITOS:</h3>
 Desenvolvido por: Luiza && Marcela para a disciplina de computação gráfica 2016/01.
