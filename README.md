@@ -6,6 +6,7 @@
 
 Ajude uma pobre e terrivel aranha a conquistar suas refeições diarias.
 
-
+[! [A Aranha](images/aranha.gif)][a-aranha-youtube]
+[a-aranha-youtube]: https://www.youtube.com/watch?v=IWcU_Qsk-4A
 
 Desenvolvido por: Luiza && Marcela
