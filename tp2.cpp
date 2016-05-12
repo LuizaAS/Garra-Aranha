@@ -13,7 +13,7 @@
 
 float virar=0.0, cor=0, descer=0, tamTeia=0;
 int abaixa=0, music=0, gira=0, cima, cont[4]={0}, light0Ligada=1, volume = 75, tempoDeJogo;
-GLuint texturaQuadrado1,texturaQuadrado2,texturaQuadrado3,texturaQuadrado4,texturaQuadrado5,texturaFloresta,texturaArvores,texturaTeia, texturaWin, texturaInicial, texturaGamaOver;
+GLuint texturaQuadrado1,texturaQuadrado2,texturaQuadrado3,texturaQuadrado4,texturaQuadrado5,texturaFloresta,texturaArvores,texturaTeia, texturaWin, texturaInicial, texturaGamaOver, texturaTutorial;
 GLuint texturaPlay, texturaMenu;
 Aranha a;
 Insetos i[qntInsetos];
@@ -90,6 +90,10 @@ void desenha2D(){
 			switch(menu){
 				case inicial:
 					desenhaBotao(play);
+					desenhaBotao(tutorial);
+					break;
+				case Tutorial:
+					desenhaTextura(texturaTutorial, -tamTela.x/2, tamTela.x/2, -tamTela.y/2, tamTela.y/2, 0, 0, 0, 0);
 					break;
 				case win:
 					desenhaTextura(texturaWin, -tamTela.x/6+30, tamTela.x/6+30, -tamTela.y/6, tamTela.y/6, 0, 0, 0, 0);
@@ -146,7 +150,7 @@ void init(){
 	texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
 	texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
 	texturaTeia = carregar_textura("imagens/teia.png");
-	texturaInicial = carregar_textura("imagens/forest.jpg");		
+	texturaInicial = carregar_textura("imagens/forest.png");		texturaTutorial = carregar_textura("imagens/tutorial2.png");	
 	play.textura=carregar_textura("imagens/playbutton.png");		tutorial.textura=carregar_textura("imagens/tutorial.png");
 	texturaWin = carregar_textura("imagens/win.png");				texturaGamaOver = carregar_textura("imagens/gameover.png");
     glEnable( GL_BLEND );
@@ -155,7 +159,7 @@ void init(){
   	musicaInicio.openFromFile("audios/casa.ogg");	musicaAranha.openFromFile("audios/aranha.ogg");		musicaInseto.openFromFile("audios/grito.ogg"); 	musicaGameOver.openFromFile("audios/GameOver.ogg");
 
   	play.tamanho.x=100; play.coordenadas.x=-200;	play.tamanho.y=100; 	play.coordenadas.y=-200;
-  	tutorial.tamanho.x = 100 ; tutorial.coordenadas.x =-50 ;  	tutorial.tamanho.y = 50; tutorial.coordenadas.y= -200;
+  	tutorial.tamanho.x = 200 ; tutorial.coordenadas.x =-50 ;  	tutorial.tamanho.y = 100; tutorial.coordenadas.y= -210;
   	inicializa();
 
    	glClearColor(1,1,1,1);
@@ -190,6 +194,8 @@ void mouseClick (int button, int state, int x, int y) {
           inicializa();
           menu=jogo;
         }
+        else if(clique(mouse, tutorial))
+        	menu=Tutorial;
         break;
     }
   }
@@ -247,6 +253,7 @@ void teclaEspecial(int key, int x, int y){
 		case jogo:
 			if(a.est==ativo){ teclaEspecialJogo(key);}
 			break;
+		case Tutorial:
 		case win:
 		case gameOver:
 			menu = inicial;
@@ -307,6 +314,7 @@ static void teclado(unsigned char key, int x, int y){
 			break;
 		case inicial:
 			break;
+		case Tutorial:
 		case win:
 		case gameOver:
 			menu = inicial;
