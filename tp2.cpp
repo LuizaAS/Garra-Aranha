@@ -159,8 +159,8 @@ void init(){
 
   	musicaInicio.openFromFile("audios/casa.ogg");	musicaAranha.openFromFile("audios/aranha.ogg");		musicaInseto.openFromFile("audios/grito.ogg"); 	musicaGameOver.openFromFile("audios/GameOver.ogg");
 
-  	play.tamanho.x=100; play.coordenadas.x=-200;	play.tamanho.y=100; 	play.coordenadas.y=-200;
-  	tutorial.tamanho.x = 200 ; tutorial.coordenadas.x =-50 ;  	tutorial.tamanho.y = 100; tutorial.coordenadas.y= -210;
+  	play.tamanho.x=150; play.coordenadas.x=0;	play.tamanho.y=150; 	play.coordenadas.y=0;
+  	tutorial.tamanho.x = 400 ; tutorial.coordenadas.x =0 ;  	tutorial.tamanho.y = 200; tutorial.coordenadas.y= -200;
   	inicializa();
 
    	glClearColor(1,1,1,1);
