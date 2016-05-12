@@ -6,7 +6,7 @@ typedef struct insetos{
    Estado est;
    Tipo tipo;
 }Insetos;
-#define qntInsetos 10
+#define qntInsetos 2
 
 void desenhaArainha(Insetos i);
 

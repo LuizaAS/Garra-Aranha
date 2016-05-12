@@ -132,9 +132,14 @@ void inicializa(){
 	musicaInicio.setVolume(volume);	musicaAranha.setVolume(volume); musicaInseto.setVolume(volume); musicaGameOver.setVolume(volume);
 	musicaInicio.setLoop(true);
   	musicaInicio.play();
+    virar=0.0;  cor=0; descer=0; tamTeia=0;
+    abaixa=0; music=0; gira=0; cima;  light0Ligada=1; volume = 75;
 
   	tempoDeJogo=0;
     menu = inicial;
+    for (int b = 0; b < 4; b++) {
+            cont[b]=0;
+    }
 
   	a.angulosPatas = anguloPatasAbertas; a.anguloCima = angCabecaBaixo;
   	a.est = ativo;
@@ -152,7 +157,7 @@ void init(){
 	texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
 	texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
 	texturaTeia = carregar_textura("imagens/teia.png");
-	texturaInicial = carregar_textura("imagens/forest.png");		texturaTutorial = carregar_textura("imagens/tutorial2.png");	
+	texturaInicial = carregar_textura("imagens/forest.png");		texturaTutorial = carregar_textura("imagens/tutorial2.png");
 	play.textura=carregar_textura("imagens/playbutton.png");		tutorial.textura=carregar_textura("imagens/tutorial.png");
 	texturaWin = carregar_textura("imagens/win.png");				texturaGamaOver = carregar_textura("imagens/gameover.png");
 
@@ -185,7 +190,7 @@ void init(){
    	glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
 }
 
-void mouseClick (int button, int state, int x, int y) { 
+void mouseClick (int button, int state, int x, int y) {
   struct posicao mouse;
   converteCoordenadas(x, y,&mouse, tamTela);
   if (button==GLUT_LEFT_BUTTON){

@@ -7,7 +7,7 @@ typedef struct colisao{
    Posicao centro;
 } Colisao;
 
-#define tempoMaximoJogo 80
+#define tempoMaximoJogo 8000
 
 void converteCoordenadas(int x, int y, struct posicao *mouse, struct posicao tamanhoTela);
 bool clique(struct posicao mouse, struct botao botao1);
