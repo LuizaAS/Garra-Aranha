@@ -15,8 +15,8 @@ void converteCoordenadas(int x, int y, struct posicao *mouse, struct posicao tam
 	mouse->x=x-(tamanhoTela.x/2);
 }
 
-bool clique(struct posicao mouse, struct botoes botao){
-	if ((mouse.y>=(botao.coordenadas.y-botao.tamanho.y))&&(mouse.y<=(botao.coordenadas.y+botao.tamanho.y))&&(mouse.x>=(botao.coordenadas.x-botao.tamanho.x))&&(mouse.x<=(botao.coordenadas.x+botao.tamanho.x))){    
+bool clique(struct posicao mouse, struct botao botao1){
+	if ((mouse.y>=(botao1.coordenadas.y-botao1.tamanho.y))&&(mouse.y<=(botao1.coordenadas.y+botao1.tamanho.y))&&(mouse.x>=(botao1.coordenadas.x-botao1.tamanho.x))&&(mouse.x<=(botao1.coordenadas.x+botao1.tamanho.x))){    
 		return true;
 	}
 	return false;

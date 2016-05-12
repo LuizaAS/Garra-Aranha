@@ -10,47 +10,20 @@
 #include "aranha.h"
 #include "fundo.h"
 
-/*bool clique(struct posicao mouse, struct botoes botao){
-	if ((mouse.y>=(botao.coordenadas.y-botao.tamanho.y))&&(mouse.y<=(botao.coordenadas.y+botao.tamanho.y))&&(mouse.x>=(botao.coordenadas.x-botao.tamanho.x))&&(mouse.x<=(botao.coordenadas.x+botao.tamanho.x))){    
-		printf("ok\n");
-		return true;
-	}
-	return false;
-}*/
-
-void desenhaBotoes(struct botoes botao){
+void desenhaBotao(struct botao botao1){
   	glPushMatrix();
-	  	glTranslatef(botao.coordenadas.x, botao.coordenadas.y, 0);
+	  	glTranslatef(botao1.coordenadas.x, botao1.coordenadas.y, 0);
 	  	glEnable(GL_BLEND);
 		    glEnable(GL_TEXTURE_2D);
-			    glBindTexture(GL_TEXTURE_2D, botao.textura);
+			    glBindTexture(GL_TEXTURE_2D, botao1.textura);
 			    glBegin(GL_QUADS);
-			        glTexCoord2f(0, 0); glVertex3f(-botao.tamanho.x/2, -botao.tamanho.y/2,  0);
-			        glTexCoord2f(1, 0); glVertex3f( botao.tamanho.x/2, -botao.tamanho.y/2,  0);
-			        glTexCoord2f(1, 1); glVertex3f( botao.tamanho.x/2,  botao.tamanho.y/2,  0);
-			        glTexCoord2f(0, 1); glVertex3f(-botao.tamanho.x/2,  botao.tamanho.y/2,  0);
+			        glTexCoord2f(0, 0); glVertex3f(-botao1.tamanho.x/2, -botao1.tamanho.y/2,  0);
+			        glTexCoord2f(1, 0); glVertex3f( botao1.tamanho.x/2, -botao1.tamanho.y/2,  0);
+			        glTexCoord2f(1, 1); glVertex3f( botao1.tamanho.x/2,  botao1.tamanho.y/2,  0);
+			        glTexCoord2f(0, 1); glVertex3f(-botao1.tamanho.x/2,  botao1.tamanho.y/2,  0);
 			    glEnd();
 		    glDisable(GL_TEXTURE_2D);
 	    glDisable(GL_BLEND);
    	glPopMatrix();
 }
 
-// void Botoes(GLuint texturaPlay, GLuint texturaPause){
-//     glEnable(GL_TEXTURE_2D);
-// 	    glBindTexture(GL_TEXTURE_2D, texturaPlay);
-// 	    glBegin(GL_QUADS);
-// 	        glTexCoord2f(0, 0); glVertex3f(-3, -11,  0);
-// 	        glTexCoord2f(1, 0); glVertex3f( -1, -11,  0);
-// 	        glTexCoord2f(1, 1); glVertex3f( -1, -9,  0);
-// 	        glTexCoord2f(0, 1); glVertex3f( -3, -9,  0);
-// 	    glEnd();
-
-// 	    glBindTexture(GL_TEXTURE_2D, texturaPause);
-// 	    glBegin(GL_QUADS);
-// 	        glTexCoord2f(0, 0); glVertex3f(1, -11,  0);
-// 	        glTexCoord2f(1, 0); glVertex3f( 3, -11,  0);
-// 	        glTexCoord2f(1, 1); glVertex3f( 3, -9,  0);
-// 	        glTexCoord2f(0, 1); glVertex3f( 1, -9,  0);
-// 	    glEnd();
-//     glDisable(GL_TEXTURE_2D);
-// }

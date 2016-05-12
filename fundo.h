@@ -9,7 +9,7 @@ const GLfloat mat_diffuse[]    = { 0.3f, 0.3f, 0.3f, 1.0f };
 const GLfloat mat_specular[]   = { 0.5f, 0.5f, 0.5f, 1.0f };
 const GLfloat high_shininess[] = { 100.0f};
 
-enum OpcoesDeTela {inicial, jogo, win, gameOver, opcoes};
+enum OpcoesDeTela {inicial, jogo, win, gameOver, Tutorial};
 
 int carregar_textura(char const nome[40]);
 void desenhaTextura(GLuint textura, int x1, int x2, int y1, int y2, int z1, int z2, int z3, int z4);

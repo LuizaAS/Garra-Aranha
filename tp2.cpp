@@ -12,14 +12,15 @@
 #include "insetos.h"
 
 float virar=0.0, cor=0, descer=0, tamTeia=0;
-int abaixa=0, music=0, gira=0, cont[4]={0}, light0Ligada=1, volume = 75, tempoDeJogo;
+int abaixa=0, music=0, gira=0, cima, cont[4]={0}, light0Ligada=1, volume = 75, tempoDeJogo;
 GLuint texturaQuadrado1,texturaQuadrado2,texturaQuadrado3,texturaQuadrado4,texturaQuadrado5,texturaFloresta,texturaArvores,texturaTeia, texturaWin, texturaInicial, texturaGamaOver;
 GLuint texturaPlay, texturaMenu;
 Aranha a;
 Insetos i[qntInsetos];
 Posicao tamTela;
-sf::Music musicaInicio,musicaAranha, musicaInseto;
+sf::Music musicaInicio,musicaAranha, musicaInseto, musicaGameOver;
 OpcoesDeTela menu;
+struct botao play, tutorial;
 
 void redimensiona(int w, int h){
    glViewport (0, 0, (GLsizei) w, (GLsizei) h);
@@ -28,65 +29,106 @@ void redimensiona(int w, int h){
    gluPerspective(65.0, (GLfloat) w/(GLfloat) h, 1.0, 20.0);
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
-   glTranslatef (0.0, 0.0, -5.0);
+   //glTranslatef (0.0, 0.0, -5.0);
    tamTela.x=w;
    tamTela.y=h;
 }
 
 void desenhaJogo(){
 	glLoadIdentity ();
+	float down=0;
 	gluPerspective(65.0, (GLfloat) tamTela.x/(GLfloat) tamTela.y, 1.0, 20.0);
 	glColor3f(1,1,1);
-	float down=0;
 	if(abaixa>0)
 		down=3.5;
 	if(virar>=3.5)
 		virar--;
 	else if(virar<=-5)
 		virar++;
-    glLoadIdentity();
+    	glLoadIdentity();
+	if(cima>0)
+		gira=0;
 	if(gira>0)
-		gluLookAt(0-gira, 1, 7.0-gira, 0.0+virar+gira, 0.0-down, 0.0-gira, 0.0, 1.0, 0.0);
+		gluLookAt(0-gira, 1+cima, 7.0-gira-cima, 0.0+virar+gira, 0.0-down, 0.0-gira-cima, 0.0, 1.0, 0.0);
 	else if(gira<0)
-		gluLookAt(0-gira, 1, 7.0+gira, 0.0+virar+gira, 0.0-down, 0.0+gira, 0.0, 1.0, 0.0);
+		gluLookAt(0-gira, 1+cima, 7.0+gira-cima, 0.0+virar+gira, 0.0-down, 0.0+gira-cima, 0.0, 1.0, 0.0);
 		else
-        	gluLookAt(0, 1.0, 7.0, 0.0+virar, 0-down, 0, 0.0, 1.0, 0.0);
-
+        	gluLookAt(0, 1.0+cima, 7.0-cima, 0.0+virar, 0-down, 0-cima, 0.0, 1.0, 0.0);
+	//glEnable(GL_LIGHTING);
   	glEnable(GL_DEPTH_TEST);
 
 	Floresta(texturaFloresta, texturaArvores);
 	Paredes(texturaQuadrado1, texturaQuadrado2, texturaQuadrado3, texturaQuadrado4, texturaQuadrado5);
 	Teia(texturaTeia);
 
-	if(animaInsetos(&a,i, &musicaInseto)==qntInsetos)
+	if(animaInsetos(&a,i, &musicaInseto)==qntInsetos){
 		menu = win;
+		musicaAranha.stop();
+		musicaInicio.stop();
+	}
 	else{
 		animaAranha(&a, cont, &tamTeia, &descer, &musicaAranha, &musicaInicio);
 		desenhaAranha(a, cor);
 	}
 	glDisable(GL_DEPTH_TEST);
-    glutSwapBuffers();
+	//glDisable(GL_LIGHTING);
+
+}
+
+//inspirada na funcao desenha 2D do tulio e arthur
+void desenha2D(){
+	glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glMatrixMode (GL_PROJECTION);
+    glPushMatrix();
+        glLoadIdentity();
+        glOrtho(-tamTela.x/2, tamTela.x/2, -tamTela.y/2, tamTela.y/2, -3.0, 3.0);
+        glMatrixMode(GL_MODELVIEW);
+        glPushMatrix();
+            glLoadIdentity();
+            desenhaTextura(texturaInicial, -tamTela.x/2, tamTela.x/2, -tamTela.y/2, tamTela.y/2, 0, 0, 0, 0);
+			switch(menu){
+				case inicial:
+					desenhaBotao(play);
+					break;
+				case win:
+					desenhaTextura(texturaWin, -tamTela.x/6+30, tamTela.x/6+30, -tamTela.y/6, tamTela.y/6, 0, 0, 0, 0);
+					break;
+				case gameOver:
+					desenhaTextura(texturaGamaOver, -tamTela.x/5, tamTela.x/5, -tamTela.y/6, tamTela.y/6, 0, 0, 0, 0);
+					break;
+				}
+            glMatrixMode(GL_PROJECTION);
+        glPopMatrix();
+        glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(0, 1, 0, 0, 0, -9.0, 0, 1, 0);
 }
 
 void desenha(){
-	glOrtho(-tamTela.x/2, tamTela.x/2, -tamTela.y/2, tamTela.y/2, -1, 1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glColor4f(1, 1, 1, 1);
+    glLoadIdentity();
+
 	switch(menu){
 		case jogo:
 			desenhaJogo();
 			break;
-		case inicial:
-			desenhaTextura(texturaInicial, -tamTela.x/2, tamTela.x/2, -tamTela.y/2, tamTela.y/2, 0, 0, 0, 0);
-			break;
+			default:
+				desenha2D();
 	}
+	    glutSwapBuffers();
 }
 
 void inicializa(){
-	musicaInicio.setVolume(volume);	musicaAranha.setVolume(volume); musicaInseto.setVolume(volume);
+	musicaInicio.setVolume(volume);	musicaAranha.setVolume(volume); musicaInseto.setVolume(volume); musicaGameOver.setVolume(volume);
 	musicaInicio.setLoop(true);
   	musicaInicio.play();
 
   	tempoDeJogo=0;
-    menu = jogo;
+    menu = inicial;
 
   	a.angulosPatas = anguloPatasAbertas; a.anguloCima = angCabecaBaixo;
   	a.est = ativo;
@@ -104,12 +146,16 @@ void init(){
 	texturaQuadrado5 = carregar_textura("imagens/quadrado5.jpg");
 	texturaFloresta  = carregar_textura("imagens/chao.jpg");		 texturaArvores = carregar_textura("imagens/floresta.jpg");
 	texturaTeia = carregar_textura("imagens/teia.png");
-	texturaInicial = carregar_textura("imagens/forest.jpg");
+	texturaInicial = carregar_textura("imagens/forest.jpg");		
+	play.textura=carregar_textura("imagens/playbutton.png");		tutorial.textura=carregar_textura("imagens/tutorial.png");
+	texturaWin = carregar_textura("imagens/win.png");				texturaGamaOver = carregar_textura("imagens/gameover.png");
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-  	musicaInicio.openFromFile("audios/casa.ogg");	musicaAranha.openFromFile("audios/aranha.ogg");		musicaInseto.openFromFile("audios/grito.ogg"); 
+  	musicaInicio.openFromFile("audios/casa.ogg");	musicaAranha.openFromFile("audios/aranha.ogg");		musicaInseto.openFromFile("audios/grito.ogg"); 	musicaGameOver.openFromFile("audios/GameOver.ogg");
 
+  	play.tamanho.x=100; play.coordenadas.x=-200;	play.tamanho.y=100; 	play.coordenadas.y=-200;
+  	tutorial.tamanho.x = 100 ; tutorial.coordenadas.x =-50 ;  	tutorial.tamanho.y = 50; tutorial.coordenadas.y= -200;
   	inicializa();
 
    	glClearColor(1,1,1,1);
@@ -138,35 +184,14 @@ void mouseClick (int button, int state, int x, int y) {
   struct posicao mouse;
   converteCoordenadas(x, y,&mouse, tamTela);
   if (button==GLUT_LEFT_BUTTON){
-    // switch(parametro.telaAtual){
-    //   case jogo:
-    //     break;
-    //   case confirmaSair:
-    //     if(clique(mouse, parametro.sim))
-    //       exit(0);
-    //     else if(clique(mouse, parametro.nao))
-    //       parametro.telaAtual=parametro.telaAnterior;
-    //     break;
-    //   case confirmaReiniciar:
-    //     if(clique(mouse, parametro.sim)){
-    //       parametro.telaAtual=inicial;
-    //       reinicia(&parametro, obj, &jogador);
-    //       musicJogo.stop(); 
-    //       musicInicial.setLoop(true);
-    //       musicInicial.play();
-    //     }
-    //     else if(clique(mouse, parametro.nao))
-    //         parametro.telaAtual=parametro.telaAnterior;
-    //     break;
-    //   case inicial:
-    //     if(clique(mouse, parametro.play)){
-    //       reinicia(&parametro, obj, &jogador);
-    //       parametro.telaAtual=jogo;
-    //       musicInicial.stop();
-    //       musicJogo.play();
-    //     }
-    //     break;
-    // }
+    switch(menu){
+      case inicial:
+        if(clique(mouse, play)){
+          inicializa();
+          menu=jogo;
+        }
+        break;
+    }
   }
 }
 
@@ -251,7 +276,11 @@ void teclaNormalJogo(unsigned char key){
 			gira=0;
 			virar=0;
 			abaixa=0;
+			cima=0;
 			break;
+		case 'w':
+	    	cima=8;
+	    	break;
 		case ' ':
 			if(a.est==ativo){
 				a.est=colide;
@@ -289,8 +318,12 @@ static void teclado(unsigned char key, int x, int y){
 static void idle(void){
 	if(menu==jogo){
 		tempoDeJogo++;
-		if(tempoDeJogo==tempoMaximoJogo)
+		if(tempoDeJogo==tempoMaximoJogo){
 			menu=gameOver;
+			musicaAranha.stop();
+			musicaInicio.stop();
+			musicaGameOver.play();
+		}
 	}
    	glutPostRedisplay();
 }
