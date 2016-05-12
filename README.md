@@ -14,7 +14,7 @@ Ajude uma pobre e terrivel aranha a conquistar suas refeições diarias.
 
 <h3>SISTEMA SUPORTADO: LINUX</h3>
 
-<h3>BLIBLIOTECAS E COMO RODAR EM LINUX:</h3>
+<h3>BIBLIOTECAS E COMO RODAR EM LINUX:</h3>
 
 <h4>COMPILANDO E RODANDO (LINUX):</h4>
 
