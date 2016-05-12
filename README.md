@@ -4,14 +4,16 @@
 
 [![A Aranha](images/aranha.gif)][a-aranha-youtube]
 
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/imagens/aranha.gif?raw=true" width="250" height="300"/>
+
 [a-aranha-youtube]: https://www.youtube.com/watch?v=IWcU_Qsk-4A
 
 Ajude uma pobre e terrivel aranha a conquistar suas refeições diarias.
 
 
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/tree/master/screenshots/Captura de tela de 2016-05-12 00:55:41.png?raw=true" width="250" height="300"/>
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/tree/master/screenshots/Captura de tela de 2016-05-12 00:55:54.png?raw=true" width="250" height="300"/>
-<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/tree/master/screenshots/Captura de tela de 2016-05-12 00:55:58.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:41.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:54.png?raw=true" width="250" height="300"/>
+<img align="center" src="https://github.com/LuizaAS/Garra-Aranha/blob/master/screenshots/Captura%20de%20tela%20de%202016-05-12%2000:55:58.png?raw=true" width="250" height="300"/>
 
 <h3>SISTEMA SUPORTADO: LINUX</h3>
 
